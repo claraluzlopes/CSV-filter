@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Filtrador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CSV Filtrador</h1>
+    
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file">Upload seu CSV do NuBank:</label>
+            <input type="file" name="file" id="file" multiple required>
+        
+            <label for="sender">Nome do remetente (como aparece no CSV):</label>
+            <input type="text" name="sender" id="sender" required>
+        
+            <button type="submit">Filtrar</button>
+        </form>
+
+        {% if transactions %}
+            <h2> Resultados filtrados </h2>
+            <table>
+                <thead>
+                    <tr>
+                        {% for key in transactions[0].keys() %}
+                            <th>{{ key }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in transactions %}
+                    <tr>
+                        {% for value in row.values() %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+    <form id="pdfForm" method="POST" action="/gerar-pdf">
+        <input type="hidden" name="data" id="pdfData">
+        <button type="submit">Baixar PDF</button>
+    </form>
+</body>
+</html>

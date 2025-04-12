@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSV Filtrador</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="container">
         <h1>CSV Filtrador</h1>
     
         <form method="POST" enctype="multipart/form-data">
-            <label for="file">Upload seu CSV do NuBank:</label>
+            <label for="file">Upload seu CSV do <span>NuBank</span>:</label>
             <input type="file" name="file" id="file" multiple required>
         
             <label for="sender">Nome do remetente (como aparece no CSV):</label>
@@ -42,9 +44,5 @@
             </table>
         {% endif %}
     </div>
-    <form id="pdfForm" method="POST" action="/gerar-pdf">
-        <input type="hidden" name="data" id="pdfData">
-        <button type="submit">Baixar PDF</button>
-    </form>
 </body>
 </html>

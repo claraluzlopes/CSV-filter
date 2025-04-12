@@ -1,8 +1,15 @@
     body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f3f3f3;
+        font-family: 'Inter', sans-serif;
+        background-color: #8a05be;
         padding: 2rem;
         color: #333;
+    }
+
+    h1 {
+        text-align: center;
+        padding-bottom: 6%;
+        font-weight: 400;
+        color: #6e059c;
     }
     
     .container {
@@ -12,6 +19,7 @@
         padding: 2rem;
         border-radius: 10px;
         box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        text-align: center;
     }
     
     form {
